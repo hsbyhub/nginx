@@ -5,3 +5,4 @@ cmake-build-debug
 objs
 auto/cmake
 auto/configure
+build

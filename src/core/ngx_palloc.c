@@ -20,7 +20,7 @@ ngx_create_pool(size_t size, ngx_log_t *log)
 {
     ngx_pool_t  *p;
 
-    p = ngx_memalign(NGX_POOL_ALIGNMENT, size, log);
+    p = ngx_memalign(NGX_POOL_ALIGNMENT, size, log);    // 内存对齐
     if (p == NULL) {
         return NULL;
     }
@@ -160,7 +160,7 @@ ngx_palloc_small(ngx_pool_t *pool, size_t size, ngx_uint_t align)
             m = ngx_align_ptr(m, NGX_ALIGNMENT);
         }
 
-        if ((size_t) (p->d.end - m) >= size) {
+        if ((size_t) (p->d.end - m) >= size) {          //// 找到足够内存片，直接返回
             p->d.last = m + size;
 
             return m;
@@ -181,9 +181,9 @@ ngx_palloc_block(ngx_pool_t *pool, size_t size)
     size_t       psize;
     ngx_pool_t  *p, *new;
 
-    psize = (size_t) (pool->d.end - (u_char *) pool);
+    psize = (size_t) (pool->d.end - (u_char *) pool);                               //// 计算上一个内存快的大小
 
-    m = ngx_memalign(NGX_POOL_ALIGNMENT, psize, pool->log);
+    m = ngx_memalign(NGX_POOL_ALIGNMENT, psize, pool->log);     //// 申请内存，内存对齐
     if (m == NULL) {
         return NULL;
     }
@@ -195,11 +195,11 @@ ngx_palloc_block(ngx_pool_t *pool, size_t size)
     new->d.failed = 0;
 
     m += sizeof(ngx_pool_data_t);
-    m = ngx_align_ptr(m, NGX_ALIGNMENT);
+    m = ngx_align_ptr(m, NGX_ALIGNMENT);                    //// 对齐
     new->d.last = m + size;
 
     for (p = pool->current; p->d.next; p = p->d.next) {
-        if (p->d.failed++ > 4) {
+        if (p->d.failed++ > 4) {                            //// 每块内存有4次申请失败的机会
             pool->current = p->d.next;
         }
     }
