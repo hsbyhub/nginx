@@ -205,15 +205,15 @@ main(int argc, char *const *argv)
 
     ngx_debug_init();
 
-    if (ngx_strerror_init() != NGX_OK) {
+    if (ngx_strerror_init() != NGX_OK) {                // 初始化错误码列表errno --xiesenxin
         return 1;
     }
 
-    if (ngx_get_options(argc, argv) != NGX_OK) {
+    if (ngx_get_options(argc, argv) != NGX_OK) {        // 读取程序选项 --xiesenxin
         return 1;
     }
 
-    if (ngx_show_version) {
+    if (ngx_show_version) {                             // 打印版本信息 --xiesenxin
         ngx_show_version_info();
 
         if (!ngx_test_config) {
@@ -223,7 +223,7 @@ main(int argc, char *const *argv)
 
     /* TODO */ ngx_max_sockets = -1;
 
-    ngx_time_init();
+    ngx_time_init();                                    // 初始化时间模块 --xiesenxin
 
 #if (NGX_PCRE)
     ngx_regex_init();
