@@ -40,13 +40,13 @@ struct ngx_pool_cleanup_s {
 
 typedef struct ngx_pool_large_s  ngx_pool_large_t;
 
-struct ngx_pool_large_s {               //// 大内存块
+struct ngx_pool_large_s {               /// 大内存块
     ngx_pool_large_t     *next;
     void                 *alloc;
 };
 
 
-typedef struct {                        //// 小内存块
+typedef struct {                        /// 小内存块
     u_char               *last;
     u_char               *end;
     ngx_pool_t           *next;
@@ -54,7 +54,7 @@ typedef struct {                        //// 小内存块
 } ngx_pool_data_t;
 
 
-struct ngx_pool_s {                     //// 内存池控制块, 通过d.next与下一个控制块形成链表
+struct ngx_pool_s {                     /// 内存池控制块, 通过d.next与下一个控制块形成链表
     ngx_pool_data_t       d;
     size_t                max;
     ngx_pool_t           *current;

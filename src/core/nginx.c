@@ -205,15 +205,15 @@ main(int argc, char *const *argv)
 
     ngx_debug_init();
 
-    if (ngx_strerror_init() != NGX_OK) {                //// 初始化错误码列表errno
+    if (ngx_strerror_init() != NGX_OK) {                /// 初始化错误码列表errno
         return 1;
     }
 
-    if (ngx_get_options(argc, argv) != NGX_OK) {        //// 读取程序选项
+    if (ngx_get_options(argc, argv) != NGX_OK) {        /// 读取程序选项
         return 1;
     }
 
-    if (ngx_show_version) {                             //// 打印版本信息
+    if (ngx_show_version) {                             /// 打印版本信息
         ngx_show_version_info();
 
         if (!ngx_test_config) {
@@ -223,7 +223,7 @@ main(int argc, char *const *argv)
 
     /* TODO */ ngx_max_sockets = -1;
 
-    ngx_time_init();                                    //// 初始化时间模块
+    ngx_time_init();                                    /// 初始化时间模块
 
 #if (NGX_PCRE)
     ngx_regex_init();
@@ -251,7 +251,7 @@ main(int argc, char *const *argv)
     init_cycle.log = log;
     ngx_cycle = &init_cycle;
 
-    init_cycle.pool = ngx_create_pool(1024, log);   //// 创建内存池
+    init_cycle.pool = ngx_create_pool(1024, log);   /// 创建内存池
     if (init_cycle.pool == NULL) {
         return 1;
     }
@@ -260,7 +260,7 @@ main(int argc, char *const *argv)
         return 1;
     }
 
-    if (ngx_process_options(&init_cycle) != NGX_OK) {   //// 处理选项
+    if (ngx_process_options(&init_cycle) != NGX_OK) {   /// 处理选项
         return 1;
     }
 
