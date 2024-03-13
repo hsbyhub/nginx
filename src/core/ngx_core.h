@@ -11,25 +11,24 @@
 
 #include <ngx_config.h>
 
-
-typedef struct ngx_module_s          ngx_module_t;
-typedef struct ngx_conf_s            ngx_conf_t;
-typedef struct ngx_cycle_s           ngx_cycle_t;
-typedef struct ngx_pool_s            ngx_pool_t;
-typedef struct ngx_chain_s           ngx_chain_t;
-typedef struct ngx_log_s             ngx_log_t;
-typedef struct ngx_open_file_s       ngx_open_file_t;
-typedef struct ngx_command_s         ngx_command_t;
-typedef struct ngx_file_s            ngx_file_t;
-typedef struct ngx_event_s           ngx_event_t;
-typedef struct ngx_event_aio_s       ngx_event_aio_t;
-typedef struct ngx_connection_s      ngx_connection_t;
-typedef struct ngx_thread_task_s     ngx_thread_task_t;
-typedef struct ngx_ssl_s             ngx_ssl_t;
-typedef struct ngx_proxy_protocol_s  ngx_proxy_protocol_t;
-typedef struct ngx_quic_stream_s     ngx_quic_stream_t;
-typedef struct ngx_ssl_connection_s  ngx_ssl_connection_t;
-typedef struct ngx_udp_connection_s  ngx_udp_connection_t;
+typedef struct ngx_module_s ngx_module_t;                    /// Nginx模块的结构体，用于表示不同的Nginx模块，如HTTP模块、事件模块等。
+typedef struct ngx_conf_s ngx_conf_t;                        /// 用于存储Nginx配置项解析和处理过程中的状态信息的结构体。
+typedef struct ngx_cycle_s ngx_cycle_t;                      /// Nginx运行时的主要环境的结构体，包括配置信息、日志信息、监听端口等。
+typedef struct ngx_pool_s ngx_pool_t;                        /// Nginx的内存池的结构体，用于分配和管理内存。
+typedef struct ngx_chain_s ngx_chain_t;                      /// 用于在Nginx中表示一个链表，通常用于在处理HTTP请求或响应时管理数据的链式结构。
+typedef struct ngx_log_s ngx_log_t;                          /// Nginx的日志系统的结构体，用于记录程序运行时的日志信息。
+typedef struct ngx_open_file_s ngx_open_file_t;              /// 用于在Nginx中表示一个已打开的文件，主要用于日志文件的管理。
+typedef struct ngx_command_s ngx_command_t;                  /// 代表一个Nginx配置指令的结构体，用于配置文件中的指令解析。
+typedef struct ngx_file_s ngx_file_t;                        /// 代表一个文件的结构体，在Nginx中用于文件的操作和管理。
+typedef struct ngx_event_s ngx_event_t;                      /// 代表一个事件的结构体，在Nginx的事件驱动模型中，事件是程序运行的基本单位。
+typedef struct ngx_event_aio_s ngx_event_aio_t;              /// 用于在Nginx中表示异步I/O事件的结构体。
+typedef struct ngx_connection_s ngx_connection_t;            /// 代表一个连接的结构体，用于管理客户端和服务器之间的连接。
+typedef struct ngx_thread_task_s ngx_thread_task_t;          /// 代表一个线程任务的结构体，在Nginx中用于多线程任务的管理。
+typedef struct ngx_ssl_s ngx_ssl_t;                          /// 在Nginx中表示SSL/TLS的相关信息的结构体。
+typedef struct ngx_proxy_protocol_s ngx_proxy_protocol_t;    /// 用于在Nginx中表示代理协议的相关信息的结构体。
+typedef struct ngx_quic_stream_s ngx_quic_stream_t;          /// 用于在Nginx中表示QUIC流的相关信息的结构体。
+typedef struct ngx_ssl_connection_s ngx_ssl_connection_t;    /// 代表一个SSL连接的结构体，在Nginx中用于管理SSL连接。
+typedef struct ngx_udp_connection_s ngx_udp_connection_t;    /// 代表一个UDP连接的结构体，在Nginx中用于管理UDP连接。
 
 typedef void (*ngx_event_handler_pt)(ngx_event_t *ev);
 typedef void (*ngx_connection_handler_pt)(ngx_connection_t *c);

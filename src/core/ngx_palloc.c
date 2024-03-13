@@ -195,11 +195,11 @@ ngx_palloc_block(ngx_pool_t *pool, size_t size)
     new->d.failed = 0;
 
     m += sizeof(ngx_pool_data_t);
-    m = ngx_align_ptr(m, NGX_ALIGNMENT);                    /// 对齐
+    m = ngx_align_ptr(m, NGX_ALIGNMENT);                                            /// 对齐
     new->d.last = m + size;
 
     for (p = pool->current; p->d.next; p = p->d.next) {
-        if (p->d.failed++ > 4) {                            /// 每块内存有4次申请失败的机会
+        if (p->d.failed++ > 4) {                                                    /// 每块内存有4次申请失败的机会
             pool->current = p->d.next;
         }
     }
